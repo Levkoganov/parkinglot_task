@@ -8,10 +8,10 @@ function parkinglotBusiestHour(logs) {
     enterHours.push(date.format("HH:mm A")); // Push all dates into array
   }
 
-  return getMustFrequentHours(enterHours);
+  return getMostFrequentHours(enterHours);
 }
 
-function getMustFrequentHours(arr) {
+function getMostFrequentHours(arr) {
   let distribution = {};
   let max = 0;
   let result = [];

@@ -31,7 +31,7 @@ if (typeof logs !== "undefined" && Array.isArray(logs)) {
 
 const hours = 2 // set required hour to pass
 
-console.log("vehicles pass 'X' time:", numberOfVehicles(mapLogs, hours)); // Task 1
+console.log("Vehicles pass 'X' hours:", numberOfVehicles(mapLogs, hours)); // Task 1
 console.log("Vehicles spent the night:", vehicleSpentNight(mapLogs)); // Task 2
 console.log("Currently parking:", vehicleCurrentlyParking(mapLogs)); // Task 3
-console.log("busiest hours:", parkinglotBusiestHour(mapLogs)); // Task 4
+console.log("Busiest hours:", parkinglotBusiestHour(mapLogs)); // Task 4
