@@ -17,7 +17,7 @@ function vehicleSpentNight(logs) {
 
     if (action === "EXIT") 
       // Check if vehicle left after closing hour
-      if (getVehicleExitHour(vehiclesLastEntrances[vehicleId].lastEntrance, date) > closingTime)
+      if (getVehicleExitHour(vehiclesLastEntrances[vehicleId]?.lastEntrance, date) > closingTime)
         carSpentTheNight++
   }
 
@@ -26,8 +26,10 @@ function vehicleSpentNight(logs) {
 
 // Calculate vehicle exit hour
 function getVehicleExitHour(start, end) {  
+  if (start === null && end === null) return 0;
+
   const duration = moment.duration(end.diff(start)).asHours();
-  const entranceTime = start.hour()
+  const entranceTime = start?.hour()
 
   return duration + entranceTime;
 }

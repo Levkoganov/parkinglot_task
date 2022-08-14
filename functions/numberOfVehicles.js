@@ -19,9 +19,8 @@ function numberOfVehicles (logs, hours) {
       
     if (action === 'EXIT') {
       // Check if vehicle parking time is greater than "X" hours
-      if (getDiffInHours(vehiclesLastEntrances[vehicleId].lastEntrance, date) > hours) {
+      if (getDiffInHours(vehiclesLastEntrances[vehicleId]?.lastEntrance, date) > hours) 
         counters[vehicleType]++;
-      }
     }
   }
 
@@ -30,6 +29,7 @@ function numberOfVehicles (logs, hours) {
 
 // Calculate hours spent in parkinglot
 function getDiffInHours (start, end) {
+  if (start === null && end === null) return 0;
   return moment.duration(end.diff(start)).asHours();
 }
 
