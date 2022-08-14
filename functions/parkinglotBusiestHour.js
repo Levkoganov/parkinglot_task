@@ -5,6 +5,7 @@ function parkinglotBusiestHour(logs) {
   const filterByEntrance = _.filter(logs, { 'action': "ENTRANCE" });
 
   for (const { date } of filterByEntrance) {
+    if(date === null) continue;
     enterHours.push(date.format("HH:mm A")); // Push all dates into array
   }
 
