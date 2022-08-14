@@ -23,9 +23,15 @@ let mapLogs = [];
 if (typeof logs !== "undefined" && Array.isArray(logs)) {
   mapLogs = logs.map(([vehicleId, vehicleType, date, action]) => ({
     vehicleId,
-    vehicleType,
-    date: moment(date).utc(),
-    action,
+
+    // Check if vehicle type is NOT (TRUCK / CAR / MOTORCYCLE) null
+    vehicleType: vehicleType !== 'TRUCK' && vehicleType !== "CAR" && vehicleType !== "MOTORCYCLE" ? null : vehicleType,
+
+    // Check if date format is invalid then return null
+    date: moment(date, true).isValid() ? moment(new Date(date)).utc() : null,
+
+    // Check if action type is NOT (ENTRANCE / EXIT) return null 
+    action: action !== 'ENTRANCE' && action !== "EXIT" ? null : action
   }));
 }
 
