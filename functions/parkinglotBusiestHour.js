@@ -13,22 +13,23 @@ function parkinglotBusiestHour(logs) {
 }
 
 function getMostFrequentHours(arr) {
-  let distribution = {};
-  let max = 0;
-  let result = [];
+  let max = 0
+  let entrance = {};
 
-  arr.forEach((entranceHour) => {
-    distribution[entranceHour] = (distribution[entranceHour] || 0) + 1; // increment "entranceHour" key value by 1
-    if (distribution[entranceHour] > max) { 
-      max = distribution[entranceHour]; // set "max" to the most appeared "distribution[entranceHour]" key value
-      result = [entranceHour] // set new busiest entranceHour
-      return;
+  return arr.reduce((acc, hour) => {
+    entrance[hour] = (entrance[hour] || 0) + 1;
+    if (entrance[hour] > max) {
+      max = entrance[hour];
+      acc = [hour];
+      return acc
     }
 
-    if (distribution[entranceHour] === max) result.push(entranceHour);
-  });
+    if (entrance[hour] === max) 
+      acc.push(hour);
 
-  return result;
+    return acc;
+  }, []);
+  
 }
 
 
